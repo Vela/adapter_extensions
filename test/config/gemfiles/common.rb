@@ -8,14 +8,14 @@ def declare_gems(activerecord_version)
   else
     # use our own fork for bulk load support until issue fixed:
     # https://github.com/brianmario/mysql2/pull/242
-    gem 'mysql2', :git => 'https://github.com/activewarehouse/mysql2.git'
+    gem 'mysql2', '~> 0.3.16'
   end
 
   gem 'mysql'
 
   gem 'pg'
   gem 'activerecord-sqlserver-adapter'
-
+  gem 'test-unit'
   gem 'awesome_print'
   gem 'rake'
   gem 'flexmock'

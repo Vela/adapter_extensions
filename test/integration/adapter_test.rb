@@ -17,7 +17,7 @@ class AdapterTest < Test::Unit::TestCase
     configs = YAML.load_file(File.dirname(__FILE__)+ '/../config/database.yml')
     raise "Configuration #{ENV['DB']} not in database.yml!" unless configs[ENV['DB']]
     ActiveRecord::Base.configurations = configs
-    ActiveRecord::Base.establish_connection(ENV['DB'])
+    ActiveRecord::Base.establish_connection(ENV['DB'].to_sym)
   end
 
   def select_value(query)
@@ -82,7 +82,10 @@ class AdapterTest < Test::Unit::TestCase
   def test_bulk_load_interprets_empty_strings_as_empty_strings
     connection.truncate('people')
     options = {:fields => {:delimited_by => ','}}
-    connection.bulk_load(File.join(File.dirname(__FILE__), 'people_with_empties.csv'), 'people', options)
+    
+    assert_raise(ActiveRecord::StatementInvalid) do
+      connection.bulk_load(File.join(File.dirname(__FILE__), 'people_with_empties.csv'), 'people', options)      
+    end
     assert_equal 0, select_value("SELECT count(*) FROM people WHERE first_name IS NULL")
   end
   

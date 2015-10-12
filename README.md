@@ -7,7 +7,7 @@ AdapterExtensions add extra abilities to Rails ActiveRecord adapters, including:
  
 ### Compatibility matrix
 
-See Travis for up-to-date info: [![Build Status](https://secure.travis-ci.org/activewarehouse/adapter_extensions.png?branch=master)](http://travis-ci.org/activewarehouse/adapter_extensions)
+See Travis for up-to-date info: [![Build Status](https://secure.travis-ci.org/pokka/adapter_extensions.png?branch=master)](http://travis-ci.org/pokka/adapter_extensions)
 
 <table>
   <tr>
