@@ -13,7 +13,7 @@ module AdapterExtensions
   end
 
   def self.load_from_connection_pool(connection_pool)
-    require_adapter connection_pool.db_config.config[:adapter]
+    require_adapter connection_pool.db_config.configuration_hash[:adapter]
   end
 
 end
