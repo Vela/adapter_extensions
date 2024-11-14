@@ -9,7 +9,7 @@ module AdapterExtensions
   def self.require_adapter(adapter)
     require File.join(AdapterPath,"/abstract_adapter")
     specific_adapter = File.join(AdapterPath,"/#{adapter}_adapter")
-    require specific_adapter if File.exists?(specific_adapter + '.rb')
+    require specific_adapter if File.exist?(specific_adapter + '.rb')
   end
 
   def self.load_from_connection_pool(connection_pool)
